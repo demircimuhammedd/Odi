@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+ <div class="front-overlay-content">
+    <div class="front-overlay-wrap">
+        <h1>Kitap, Müzik, Film ve Dizi<br> önerilerileri</h1>
+        <!-- search form get_search_form(); -->
+        <form id="searchform2" method="get" action="#" autocomplete="off" class="col-md-6 col-sm-6 col-lg-6 col-xs-10 centered">
+            <input placeholder="Arayın..." type="text" name="s" id="s" autocomplete="off">
+            <input type="submit" value="Ara" class="buttonicon">
+            <div class="clearfix"></div>
+        </form>
+        <!-- popular words -->
+        <div class="popular-words col-md-6 col-sm-6 col-lg-6 col-xs-10 centered">
+            Popüler etiketler : <a href="http://anthemes.net/themes/1page/tag/animal/" class="tag-link-32" title="4 topics" style="font-size: 10.222222222222pt;">animal</a>
+            <a href="#/background/" class="tag-link-43" title="3 topics" style="font-size: 8pt;">background</a>
+            <a href="#/featured/" class="tag-link-20" title="10 topics" style="font-size: 17.777777777778pt;">featured</a>
+            <a href="#/media/" class="tag-link-111" title="3 topics" style="font-size: 8pt;">media</a>
+            <a href="#/photo/" class="tag-link-81" title="16 topics" style="font-size: 22pt;">photo</a>
+            <a href="#/review/" class="tag-link-84" title="3 topics" style="font-size: 8pt;">review</a>
+            <a href="#/social/" class="tag-link-93" title="5 topics" style="font-size: 12pt;">social</a>
+            <a href="#/video/" class="tag-link-82" title="4 topics" style="font-size: 10.222222222222pt;">video</a>
+        </div>
+    </div>
+</div>
+<div id="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="grid" id="post-list">
+                <div class="grid-sizer"></div>
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12 grid-item">
+                    <div class="leftSidebar">
+                        <div id="sideNav">
+                            <div class="userNav">
+                                <div class="user_Cover cover-container" style="background-image: url('assets/img/cover.jpeg')" data-clickable="true">
+                                </div>
+                                <div class="user_Profile">
+                                    <div class="avatar" style="background-image: url(assets/img/a0.png);">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name"><a href="@Url.Action("Index","Profile")" title="">@string.Format("@{0}", "John.smith")</a></div>
+                                        <small class="user-subtitle">At least we are happy in the dreams room is enough.</small>
+                                    </div>
+                                </div>
+                                <div class="user_Destination">
+                                    <div class="user_Follow">
+                                        <b>905</b>
+                                        <h4>Takipçi</h4>
+                                    </div>
+                                    <div class="user_Follow">
+                                        <b>99</b>
+                                        <h4>Takip Edilen</h4>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="left_nav_section">
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <form class="col-md-8 col-sm-8 col-lg-8 col-xs-12 grid-item" action="#formgonder" method="get" accept-charset="utf-8" id="post_form">
+                    <textarea name="" id="" cols="58" rows="2" placeholder="Bir şeyler yazın..."></textarea>
+                    <div class="files_upload">
+                        <div class="image-upload-wrap">
+                            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+
+                        </div>
+                        <div class="file-upload-content">
+                            <div class="file-upload-content-in">
+                                <img class="file-upload-image" src="#" alt="your image" />
+                                <div class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload()" class="remove-image"><i class="fa fa-close"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tools">
+                        <ul>
+                            <li><a href="#" onclick="$('.file-upload-input').trigger( 'click' )"><i class="fa fa-camera"></i></a></li>
+                        </ul>
+                        <button>Paylaş</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+                <div class="">
+                    <!-- Veri gelecek -->
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="more-item">
+                <i class="flaticon-spin"></i>
+            </div>
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- #wrapper -->

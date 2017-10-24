@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="wrapper">
+    <div class="container">
+        <div class="row">
+            <div id="settings">
+                <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12 no-padding">
+                    <div class="leftSettings">
+                        <div class="settingsHeader">
+                            <ul>
+                                <li class="active">
+                                    <a href="@Url.Action("Index","Settings")" title="">
+                                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        <h5>Hesap Ayarları</h5>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","SettingsNotification")" title="">
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                        <h5>Bildirimler</h5>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","SettingsRequest")" title="">
+                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                        <h5>Arkadaşlık İstekleri</h5>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","SettingsChangePassword")" title="">
+                                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                        <h5>Şifreyi Değiştir</h5>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 no-padding">
+                    <div class="contentSettings">
+                        <div class="settingsHeader">
+                            <h5>Hesap Ayarları</h5>
+                        </div>
+                        <form action="settings_submit" method="get" accept-charset="utf-8">
+                            <div class="SettingsItem">
+                                <h5>Bilgilendirme sesi</h5>
+                                <div class="SettingsItem-left">
+                                    Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir.
+                                </div>
+                                <div class="SettingsItem-right">
+                                    <div class="toggleWrapper">
+                                        <input type="checkbox" name="toggle1" class="mobileToggle" id="toggle1" checked>
+                                        <label for="toggle1"></label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="SettingsItem">
+                                <h5>Bilgilendirme epostası</h5>
+                                <div class="SettingsItem-left">
+                                    Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir.
+                                </div>
+                                <div class="SettingsItem-right">
+                                    <div class="toggleWrapper">
+                                        <input type="checkbox" name="toggle2" class="mobileToggle" id="toggle2" checked>
+                                        <label for="toggle2"></label>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="SettingsSave">
+                                <button class="save">Ayarları Kaydet</button>
+                                <button class="restore">Ayarları Sıfırla</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .row -->
+    </div><!-- .container -->
+</div><!-- #wrapper -->
+
