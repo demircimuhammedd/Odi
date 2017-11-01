@@ -15,22 +15,34 @@ namespace ClientMvc.Controllers
         [HttpGet]
         public JsonResult GetMedia()
         {
-            var listMedia = new List<Media>
+            var listMedia = new List<Media>();
+            listMedia.Add(new Media
             {
-                new Media
-                {
-                    BegeniSayisi = 35,
-                    GonderenIsmi = "Muhittin Topalak",
-                    GonderenResmi = "assets/img/a0.png",
-                    GonderilenTarih = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                    Icerik = "Karayip korsanlarının yeni filmi çıktı izlemenizi tavsiye ederiz",
-                    Id = 1,
-                    KategoriAdi = "Film",
-                    ResimUrl = "assets/img/film_poster/poster_2.jpg",
-                    YorumSayisi = 31,
-                    KullaniciAdi = "BigMuhittin"
-                }
-            };
+                BegeniSayisi = 35,
+                GonderenIsmi = "Muhittin Topalak",
+                GonderenResmi = "assets/img/a0.png",
+                GonderilenTarih = DateTime.Today.ToString(CultureInfo.InvariantCulture),
+                Icerik = "Karayip korsanlarının yeni filmi çıktı izlemenizi tavsiye ederiz",
+                Id = 1,
+                KategoriAdi = "Film",
+                ResimUrl = "assets/img/film_poster/poster_2.jpg",
+                YorumSayisi = 31,
+                KullaniciAdi = "BigMuhittin"
+            });
+
+            listMedia.Add(new Media
+            {
+                BegeniSayisi = 358,
+                GonderenIsmi = "Ramazan Demir",
+                GonderenResmi = "assets/img/a0.png",
+                GonderilenTarih = DateTime.Today.ToString(CultureInfo.InvariantCulture),
+                Icerik = "Koduna kodumun dünyası",
+                Id = 2,
+                KategoriAdi = "Kitap",
+                ResimUrl = "assets/img/film_poster/poster_2.jpg",
+                YorumSayisi = 62,
+                KullaniciAdi = "BigMuhittin"
+            });
 
             return Json(listMedia, JsonRequestBehavior.AllowGet);
         }
