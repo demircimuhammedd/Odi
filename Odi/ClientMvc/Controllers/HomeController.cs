@@ -13,6 +13,21 @@ namespace ClientMvc.Controllers
         }
 
         [HttpGet]
+        public JsonResult GetProfile()
+        {
+            var profile = new Profile()
+            {
+                Id = 1,
+                ResimUrl = "assets/img/a0.png",
+                Username = "BigMuhittin",
+                Ad = "Muhittin",
+                Soyad = "Topalak"
+            };
+
+            return Json(profile, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult GetMedia()
         {
             var listMedia = new List<Media>();
@@ -48,6 +63,14 @@ namespace ClientMvc.Controllers
         }
     }
 
+    public class Profile
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string ResimUrl { get; set; }
+        public string Ad { get; set; }
+        public string Soyad { get; set; }
+    }
     public class Media
     {
         public int Id { get; set; }
