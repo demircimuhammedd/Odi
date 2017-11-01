@@ -731,14 +731,19 @@
         padding: 0px;
         li{     
           margin-right: 10px;
-          a{
+          span{
             display: block;
             padding: 8px;
             padding-top: 10px;
+            cursor: pointer;
+            .anim();
             i{
               display: block;
               width: 17px;
               height: 17px;
+            }
+            &:hover, &:focus {
+              color: #ff7674;
             }
           }
         }
