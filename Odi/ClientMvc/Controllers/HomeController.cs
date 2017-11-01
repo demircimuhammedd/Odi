@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace ClientMvc.Controllers
 {
@@ -7,6 +9,42 @@ namespace ClientMvc.Controllers
         public ActionResult Index()
         {
             return View();
-        } 
+        }
+
+        [HttpGet]
+        public JsonResult GetMedia()
+        {
+            var listMedia = new List<Media>
+            {
+                new Media()
+                {
+                    BegeniSayisi = 35,
+                    GonderenIsmi = "Muhittin Topalak",
+                    GonderenResmi = "assets/img/a0.png",
+                    GonderilenTarih = DateTime.Now,
+                    Icerik = "Karayip korsanlarının yeni filmi çıktı izlemenizi tavsiye ederiz",
+                    Id = 1,
+                    KategoriAdi = "Film",
+                    ResimUrl = "assets/img/film_poster/poster_2.jpg",
+                    YorumSayisi = 31
+                }
+            };
+
+            return Json(listMedia, JsonRequestBehavior.AllowGet);
+        }
+    }
+
+    public class Media
+    {
+        public int Id { get; set; }
+        public string KategoriAdi { get; set; }
+        public string ResimUrl { get; set; }
+        public string GonderenIsmi { get; set; }
+        public string GonderenResmi { get; set; }
+        public DateTime GonderilenTarih { get; set; }
+        public string Icerik { get; set; }
+        public int BegeniSayisi { get; set; }
+        public int YorumSayisi { get; set; }
+
     }
 }
