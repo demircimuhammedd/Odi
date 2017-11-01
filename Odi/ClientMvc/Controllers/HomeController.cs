@@ -16,7 +16,7 @@ namespace ClientMvc.Controllers
         {
             var listMedia = new List<Media>
             {
-                new Media()
+                new Media
                 {
                     BegeniSayisi = 35,
                     GonderenIsmi = "Muhittin Topalak",
@@ -26,7 +26,8 @@ namespace ClientMvc.Controllers
                     Id = 1,
                     KategoriAdi = "Film",
                     ResimUrl = "assets/img/film_poster/poster_2.jpg",
-                    YorumSayisi = 31
+                    YorumSayisi = 31,
+                    KullaniciAdi = "BigMuhittin"
                 }
             };
 
@@ -45,6 +46,7 @@ namespace ClientMvc.Controllers
         public string Icerik { get; set; }
         public int BegeniSayisi { get; set; }
         public int YorumSayisi { get; set; }
+        public string KullaniciAdi { get; set; }
 
     }
 }
