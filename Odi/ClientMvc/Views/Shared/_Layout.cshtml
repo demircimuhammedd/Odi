@@ -72,9 +72,19 @@
                 </form>
             </div>
             <div class="col-md-5 col-sm-5 col-lg-5 col-xs-8 right">
+                <script>
+                    $(function () {
+                        $.get("Home/GetProfile", function (data) {
+                            $(".headerProfileDataMini").append('<a href="Profile/Index" title=""><span class="thumb-lg avatar"><img src="' + data.ResimUrl + '" alt="..."></span><h4 class="">' + data.Ad + data.Soyad + '</h4></a>');
+                            $(".headerProfileDataBig").prepend('<a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"><span class="thumb-sm avatar pull-left m-t-n-sm m-b-n-sm"><img src="' + data.ResimUrl + '" alt=""></span><span class="pull-right m-l-sm hidden-xs">' + data.Ad + data.Soyad + ' <b class="caret"></b> </span><span class="clearfix"></span></a><div class="clearfix"></div><section class="dropdown-menu user-menu animated fadeInUp"><section class="panel bg-white"><div class="panel-heading b-light bg-light"><strong>Hesabınız</strong></div><ul class="account-settings"><li><a href="Profile/Index" title=""><i class="flaticon-user"></i> <span>Profil Ayarları</span></a></li><li><a href="Profile/Settings" title=""><i class="flaticon-settings"></i> <span>Hesap Ayarları</span></a></li><li><a href="#" title=""><i class="flaticon-exit"></i> <span>Çıkış</span></a></li></ul></section></section>');
+                            $('.miniProfileImage').append('<img src="' + data.ResimUrl + '" alt="...">');
+                        });
+                    });
+                </script>
+                <!--
                 <div class="odile">
                     <a href="#post-get" title="">Odi ile paylaş</a>
-                </div>
+                </div>-->
                 <ul class="nav navbar-nav m-n nav-user user right hidden-xs">
                     <li class="">
                         <a href="#" class="dropdown-toggle lt hidden-xs" data-toggle="dropdown">
@@ -151,43 +161,17 @@
                             </section>
                         </section>
                     </li>
-                    <li class="">
-                        <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                            <span class="thumb-sm avatar pull-left m-t-n-sm m-b-n-sm">
-                                <img src="assets/img/a0.png" alt="...">
-                            </span>
-                            <span class="pull-right m-l-sm hidden-xs">John.Smith <b class="caret"></b> </span>
-                            <span class="clearfix"></span>
-                        </a>
-                        <div class="clearfix"></div>
-                        <section class="dropdown-menu user-menu animated fadeInUp">
-                            <section class="panel bg-white">
-                                <div class="panel-heading b-light bg-light">
-                                    <strong>Hesabınız</strong>
-                                </div>
-                                <ul class="account-settings">
-                                    <li><a href="@Url.Action("Index","Profile")" title=""><i class="flaticon-user"></i> <span>Profil Ayarları</span></a></li>
-                                    <li><a href="@Url.Action("Index","Settings")" title=""><i class="flaticon-settings"></i> <span>Hesap Ayarları</span></a></li>
-                                    <li><a href="#" title=""><i class="flaticon-exit"></i> <span>Çıkış</span></a></li>
-                                </ul>
-                            </section>
-                        </section>
+                    <li class="headerProfileDataBig">
                     </li>
                 </ul>
                 <div class="mini-profil right hidden-md">
                     <span class="thumb-sm avatar menuBtn">
-                        <img src="assets/img/a0.png" alt="...">
+                        <div class="miniProfileImage"></div>
                         <span class="lines"></span>
                     </span>
                     <nav class="mainMenu">
                         <ul>
-                            <li>
-                                <a href="@Url.Action("Index","Profile")" title="">
-                                    <span class="thumb-lg avatar">
-                                        <img src="assets/img/a0.png" alt="...">
-                                    </span>
-                                    <h4 class="">John.Smith</h4>
-                                </a>
+                            <li class="headerProfileDataMini">
                             </li>
                             <li>
                                 <a href="#">Hesap Ayarları</a>
