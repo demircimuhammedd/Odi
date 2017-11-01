@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace ClientMvc.Controllers
@@ -21,7 +22,7 @@ namespace ClientMvc.Controllers
                     BegeniSayisi = 35,
                     GonderenIsmi = "Muhittin Topalak",
                     GonderenResmi = "assets/img/a0.png",
-                    GonderilenTarih = DateTime.Now.ToString(),
+                    GonderilenTarih = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                     Icerik = "Karayip korsanlarının yeni filmi çıktı izlemenizi tavsiye ederiz",
                     Id = 1,
                     KategoriAdi = "Film",
