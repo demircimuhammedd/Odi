@@ -40,7 +40,7 @@ namespace ClientMvc.Controllers
                 Icerik = "Karayip korsanlarının yeni filmi çıktı izlemenizi tavsiye ederiz",
                 Id = 1,
                 KategoriAdi = "Film",
-                ResimUrl = "assets/img/film_poster/poster_2.jpg",
+                ResimUrl = "", //assets/img/film_poster/poster_2.jpg
                 YorumSayisi = 31,
                 KullaniciAdi = "BigMuhittin"
             });
@@ -49,7 +49,7 @@ namespace ClientMvc.Controllers
             {
                 BegeniSayisi = 358,
                 GonderenIsmi = "Ramazan Demir",
-                GonderenResmi = "assets/img/a0.png",
+                GonderenResmi = "", //assets/img/a0.png
                 GonderilenTarih = DateTime.Today.ToString(CultureInfo.InvariantCulture),
                 Icerik = "Koduna kodumun dünyası",
                 Id = 2,

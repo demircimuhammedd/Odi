@@ -88,6 +88,14 @@
                     </div>
                 </form>
                 <script>
+                    var app = angular.module("odi", ['infinite-scroll']);
+
+                    app.controller('odiCtrl',function ($scope, $http) {
+                        $http.get("Home/GetMedia").then(function (response) {
+                            $scope.veriler = response.data;
+                        });
+                    });
+                    /*
                     $(function () {
                         $.get("Home/GetMedia", function (data) {
                             data.forEach(function (d) {
@@ -95,7 +103,47 @@
                             });
                         });
                     });
+                    */
                 </script>
+                
+                <div class="home-page-post">
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12 grid-item" ng-repeat="veri in veriler">
+                       <div class="item-box">
+                          <div class="post-category">{{veri.KategoriAdi}}</div>
+                          <article class="post">
+                             <div class="post_header">
+                                <img ng-src="{{ veri.GonderenResmi || 'assets/img/default_user.jpg' }}" alt="" />
+                                <div class="author-date">
+                                   <a class="h4 post__author-name fn" href="profile.html">{{veri.GonderenIsmi}}</a> 
+                                   <div class="post__date"> <time class="published" datetime="2004-07-24T18:18"> March 4 at 2:05pm </time> </div>
+                                </div>
+                                <div class="more-settings">
+                                   <a href="" title="" class="dropdown-toggle bg clear" data-toggle="dropdown"> <i class="flaticon-more-1"></i> </a> 
+                                   <ul class="dropdown-menu">
+                                      <li> <a href="#">Gönderiyi Düzenle</a> </li>
+                                      <li> <a href="#">Gönderiyi Sil</a> </li>
+                                   </ul>
+                                </div>
+                             </div>
+                             <div class="post_main">
+                                <p>Hey <a href="#">Cindi</a>, you should really check out this new song by Iron Maid. The next time they come to the city we should totally go!</p>
+                                <div class="post-thumb" ng-if="veri.ResimUrl">
+                                    <img data-ng-src="{{veri.ResimUrl}}" alt="" />
+                                </div>
+                             </div>
+                             <div class="post_footer">
+                                <div class="post-additional-info inline-items">
+                                   <div class="post-additional-number"> <span><mark>49</mark> Beğeni</span> <span><mark>264</mark> Yorum</span> </div>
+                                   <div class="post-additional-button">
+                                      <button><i class="flaticon-like"></i>  </button> <button><i class="flaticon-chat-1"></i> </button> 
+                                      <div class="comments-shared"> </div>
+                                   </div>
+                                </div>
+                             </div>
+                          </article>
+                       </div>
+                    </div>
+                </div>
                 <div class="home-post-list">
                     <!-- data-list -->
                 </div>
