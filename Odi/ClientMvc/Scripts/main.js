@@ -1,8 +1,19 @@
-﻿var app = angular.module('myApp', []);
-app.controller('InfinityScrollController', ['$scope', '$http', function ($scope, $http) {
+﻿var mainApp = angular.module("mainApp", []);
+
+//var user = angular.module('user', []);
+mainApp.controller('userCtrl', function ($scope, $http) {
+    $http.get("Home/GetProfile")
+        .then(function (response) {
+            $scope.userData = response.data;
+        });
+});
+
+
+//var post = angular.module('HomePostList', []);
+mainApp.controller('HomePostListCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.CurrentPage = 1;
     $scope.TotalPage = 0;
-    $scope.EmployeeList = [];
+    $scope.veriler = [];
 
     function GetEmployeeData(page) {
         $scope.IsLoading = true;
@@ -11,11 +22,11 @@ app.controller('InfinityScrollController', ['$scope', '$http', function ($scope,
             url: 'Home/GetMedia',
             params: { 'page': page }
         }).then(function (response) {
-            angular.forEach(response.data.List, function (value) {
-                $scope.EmployeeList.push(value);
-                console.log(value);
+            angular.forEach(response.data, function (value) {
+                $scope.veriler.push(value);
+                console.log("eklendi.");
             });
-            $scope.TotalPage = response.data.length;
+            $scope.TotalPage = 2;
             $scope.IsLoading = false;
         }, function () {
             $scope.IsLoading = false;
@@ -33,7 +44,7 @@ app.controller('InfinityScrollController', ['$scope', '$http', function ($scope,
 }]);
 
 //directive
-app.directive('infinityscroll', function () {
+mainApp.directive('infinityscroll', function () {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {

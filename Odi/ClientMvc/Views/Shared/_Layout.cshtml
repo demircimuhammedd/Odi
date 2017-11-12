@@ -48,7 +48,7 @@
     <script src="~/assets/js/ng-infinite-scroll.min.js" type="text/javascript"></script>
     <script src="~/Scripts/main.js" type="text/javascript"></script>
 </head>
-<body><!-- ng-app="odi" ng-controller="odiCtrl" -->
+<body ng-app="mainApp"> <!-- ng-app="odi" ng-controller="odiCtrl" -->
 <header id="header">
     <div class="container">
         <div class="row">
@@ -79,6 +79,7 @@
                     $(function () {
                         $.get("Home/GetProfile", function (data) {
                             $(".headerProfileDataMini").append('<a href="Profile/Index" title=""><span class="thumb-lg avatar"><img src="' + data.ResimUrl + '" alt="..."></span><h4 class="">' + data.Ad + data.Soyad + '</h4></a>');
+
                             $(".headerProfileDataBig").prepend('<a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"><span class="thumb-sm avatar pull-left m-t-n-sm m-b-n-sm"><img src="' + data.ResimUrl + '" alt=""></span><span class="pull-right m-l-sm hidden-xs">' + data.Ad + data.Soyad + ' <b class="caret"></b> </span><span class="clearfix"></span></a><div class="clearfix"></div><section class="dropdown-menu user-menu animated fadeInUp"><section class="panel bg-white"><div class="panel-heading b-light bg-light"><strong>Hesabınız</strong></div><ul class="account-settings"><li><a href="Profile/Index" title=""><i class="flaticon-user"></i> <span>Profil Ayarları</span></a></li><li><a href="Profile/Settings" title=""><i class="flaticon-settings"></i> <span>Hesap Ayarları</span></a></li><li><a href="#" title=""><i class="flaticon-exit"></i> <span>Çıkış</span></a></li></ul></section></section>');
                             $('.miniProfileImage').append('<img src="' + data.ResimUrl + '" alt="...">');
                         });
@@ -164,17 +165,45 @@
                             </section>
                         </section>
                     </li>
-                    <li class="headerProfileDataBig">
+                    <li ng-controller="userCtrl">
+                        <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                            <span class="thumb-sm avatar pull-left m-t-n-sm m-b-n-sm">
+                                <img ng-src="{{ userData.ResimUrl || 'assets/img/default_user.jpg' }}" alt="{{userData.Username}} Profil Resmi">
+                            </span>
+                            <span class="pull-right m-l-sm hidden-xs">{{userData.Username}}<b class="caret"></b> </span>
+                            <span class="clearfix"></span>
+                        </a>
+                        <div class="clearfix"></div>
+                        <section class="dropdown-menu user-menu animated fadeInUp">
+                            <section class="panel bg-white">    
+                                <div class="panel-heading b-light bg-light">
+                                    <strong>Hesabınız</strong>
+                                </div>
+                                <ul class="account-settings">
+                                    <li><a href="@Url.Action("Index","Profile")" title=""><i class="flaticon-user"></i> <span>Profil Ayarları</span></a></li>
+                                    <li><a href="@Url.Action("Index","Settings")" title=""><i class="flaticon-settings"></i> <span>Hesap Ayarları</span></a></li>
+                                    <li><a href="#" title=""><i class="flaticon-exit"></i> <span>Çıkış</span></a></li>
+                                </ul>
+                            </section>
+                        </section>
                     </li>
                 </ul>
-                <div class="mini-profil right hidden-md">
-                    <span class="thumb-sm avatar menuBtn">
-                        <div class="miniProfileImage"></div>
+                <div class="mini-profil right hidden-md" ng-controller="userCtrl">
+                    <div class="thumb-sm avatar menuBtn">
+                        <div class="">
+                            <img ng-src="{{ userData.ResimUrl || 'assets/img/default_user.jpg' }}" alt="{{userData.Username}} Profil Resmi">
+                        </div>
                         <span class="lines"></span>
-                    </span>
+                    </div>
                     <nav class="mainMenu">
                         <ul>
-                            <li class="headerProfileDataMini">
+                            <li>
+                                <a href="#" title="">
+                                    <span class="thumb-lg avatar">
+                                        <img ng-src="{{ userData.ResimUrl || 'assets/img/default_user.jpg' }}" alt="{{userData.Username}} Profil Resmi">
+                                    </span>
+                                    <h4 class="">{{userData.Username}}</h4>
+                                </a>
                             </li>
                             <li>
                                 <a href="#">Hesap Ayarları</a>

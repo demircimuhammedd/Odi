@@ -18,8 +18,11 @@ namespace ClientMvc.Controllers
             var profile = new Profile()
             {
                 Id = 1,
-                ResimUrl = "assets/img/a0.png",
+                //ResimUrl = "assets/img/a0.png",
+                KapakResmiUrl = "assets/img/cover.jpeg",
+                ResimUrl = "",
                 Username = "BigMuhittin",
+                Bio = "At least we are happy in the dreams room is enough.",
                 Ad = "Muhittin",
                 Soyad = "Topalak"
             };
@@ -44,7 +47,6 @@ namespace ClientMvc.Controllers
                 YorumSayisi = 31,
                 KullaniciAdi = "BigMuhittin"
             });
-
             listMedia.Add(new Media
             {
                 BegeniSayisi = 358,
@@ -68,6 +70,8 @@ namespace ClientMvc.Controllers
         public int Id { get; set; }
         public string Username { get; set; }
         public string ResimUrl { get; set; }
+        public string KapakResmiUrl { get; set; }
+        public string Bio { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
     }

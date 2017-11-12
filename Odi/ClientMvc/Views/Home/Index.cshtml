@@ -12,17 +12,32 @@
         </form>
         <!-- popular words -->
         <div class="popular-words col-md-6 col-sm-6 col-lg-6 col-xs-10 centered">
-            Popüler etiketler : <a href="#" class="tag-link-32" title="4 topics" style="font-size: 10.222222222222pt;">animal</a>
-            <a href="#/background/" class="tag-link-43" title="3 topics" style="font-size: 8pt;">background</a>
-            <a href="#/featured/" class="tag-link-20" title="10 topics" style="font-size: 17.777777777778pt;">featured</a>
-            <a href="#/media/" class="tag-link-111" title="3 topics" style="font-size: 8pt;">media</a>
-            <a href="#/photo/" class="tag-link-81" title="16 topics" style="font-size: 22pt;">photo</a>
-            <a href="#/review/" class="tag-link-84" title="3 topics" style="font-size: 8pt;">review</a>
-            <a href="#/social/" class="tag-link-93" title="5 topics" style="font-size: 12pt;">social</a>
-            <a href="#/video/" class="tag-link-82" title="4 topics" style="font-size: 10.222222222222pt;">video</a>
+            Popüler etiketler : 
+            <a href="#" title="4 topics">yeni</a>
+            <a href="#" title="3 topics">doga</a>
+            <a href="#" title="10 topics">gelecek</a>
+            <a href="#" title="3 topics">huzur</a>
+            <a href="#" title="16 topics">2017</a>
+            <a href="#" title="3 topics">80s</a>
+            <a href="#" title="5 topics">Roman</a>
+            <a href="#" title="4 topics">Fragman</a>
         </div>
     </div>
 </div>
+<style type="text/css">
+/*Loading panel css*/
+    .loading{
+        position:absolute;
+        left:48%;
+        top:48%;
+        display:block;
+        padding:5px;
+        background-color:yellow;
+        color:red;
+        border:1px solid;
+        margin:0 auto;
+    }
+</style>
 <div id="wrapper">
     <div class="container">
         <div class="row">
@@ -31,14 +46,15 @@
                 <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12 grid-item">
                     <div class="leftSidebar">
                         <div id="sideNav">
-                            <div class="userNav">
-                                <div class="user_Cover cover-container" style="background-image: url('assets/img/cover.jpeg')" data-clickable="true">
+                            <div class="userNav" ng-controller="userCtrl">
+                                <div class="user_Cover cover-container" ng-style="{'background-image': 'url({{ userData.KapakResmiUrl || 'assets/img/cover.jpeg' }})'}" data-clickable="true">
                                 </div>
                                 <div class="user_Profile">
-                                    <div class="avatar" style="background-image: url(assets/img/a0.png);">
+                                    <div class="avatar" ng-style="{'background-image': 'url({{ userData.ResimUrl || 'assets/img/default_user.jpg' }})'}">
+                                        
                                     </div>
                                     <div class="user-info">
-                                        <div class="user-name"><a href="@Url.Action("Index","Profile")" title="">@string.Format("@{0}", "John.smith")</a></div>
+                                        <div class="user-name"><a href="@Url.Action("Index","Profile")" title="{{userData.Ad}} {{userData.Soyad}}">{{userData.Ad}} {{userData.Soyad}}</a></div>
                                         <small class="user-subtitle">At least we are happy in the dreams room is enough.</small>
                                     </div>
                                 </div>
@@ -102,68 +118,52 @@
                     });
                     */
                 </script>
-                <div ng-app="myApp" ng-controller="InfinityScrollController">
+                <div ng-controller="HomePostListCtrl">
                     <div style="position:relative">
                         <span ng-show="IsLoading" class="loading">Loading...</span>
-                        <div infinityscroll="NextPage()" style="height:400px; overflow:auto;">
-                            <table class="table table-responsive table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Country</th>
-                                        <th>City</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="emp in EmployeeList">
-                                        <td>{{emp}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!--
-                <div class="home-page-post">
-                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12 grid-item" ng-repeat="veri in veriler">
-                        <div class="item-box">
-                            <div class="post-category">{{veri.KategoriAdi}}</div>
-                            <article class="post">
-                                <div class="post_header">
-                                <img ng-src="{{ veri.GonderenResmi || 'assets/img/default_user.jpg' }}" alt="" />
-                                <div class="author-date">
-                                    <a class="h4 post__author-name fn" href="profile.html">{{veri.GonderenIsmi}}</a>
-                                    <div class="post__date"> <time class="published" datetime="2004-07-24T18:18"> March 4 at 2:05pm </time> </div>
-                                </div>
-                                <div class="more-settings">
-                                    <a href="" title="" class="dropdown-toggle bg clear" data-toggle="dropdown"> <i class="flaticon-more-1"></i> </a>
-                                    <ul class="dropdown-menu">
-                                        <li> <a href="#">Gönderiyi Düzenle</a> </li>
-                                        <li> <a href="#">Gönderiyi Sil</a> </li>
-                                    </ul>
-                                </div>
-                                </div>
-                                <div class="post_main">
-                                <p>Hey <a href="#">Cindi</a>, you should really check out this new song by Iron Maid. The next time they come to the city we should totally go!</p>
-                                <div class="post-thumb" ng-if="veri.ResimUrl">
-                                    <img data-ng-src="{{veri.ResimUrl}}" alt="" />
-                                </div>
-                                </div>
-                                <div class="post_footer">
-                                <div class="post-additional-info inline-items">
-                                    <div class="post-additional-number"> <span><mark>49</mark> Beğeni</span> <span><mark>264</mark> Yorum</span> </div>
-                                    <div class="post-additional-button">
-                                        <button><i class="flaticon-like"></i>  </button> <button><i class="flaticon-chat-1"></i> </button>
-                                        <div class="comments-shared"> </div>
+                        <div infinityscroll="NextPage()" style="/* height:400px; overflow:auto; */">
+                                
+                            <div class="home-page-post">
+                                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12 grid-item" ng-repeat="veri in veriler">
+                                    <div class="item-box">
+                                        <div class="post-category">{{veri.KategoriAdi}}</div>
+                                        <article class="post">
+                                            <div class="post_header">
+                                                <img ng-src="{{ veri.GonderenResmi || 'assets/img/default_user.jpg' }}" alt="" />
+                                                <div class="author-date">
+                                                    <a class="h4 post__author-name fn" href="profile.html">{{veri.GonderenIsmi}}</a>
+                                                    <div class="post__date"> <time class="published" datetime="2004-07-24T18:18"> March 4 at 2:05pm </time> </div>
+                                                </div>
+                                                <div class="more-settings">
+                                                    <a href="" title="" class="dropdown-toggle bg clear" data-toggle="dropdown"> <i class="flaticon-more-1"></i> </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li> <a href="#">Gönderiyi Düzenle</a> </li>
+                                                        <li> <a href="#">Gönderiyi Sil</a> </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="post_main">
+                                                <p>Hey <a href="#">Cindi</a>, you should really check out this new song by Iron Maid. The next time they come to the city we should totally go!</p>
+                                                <div class="post-thumb" ng-if="veri.ResimUrl">
+                                                    <img data-ng-src="{{veri.ResimUrl}}" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="post_footer">
+                                                <div class="post-additional-info inline-items">
+                                                    <div class="post-additional-number"> <span><mark>49</mark> Beğeni</span> <span><mark>264</mark> Yorum</span> </div>
+                                                    <div class="post-additional-button">
+                                                        <button><i class="flaticon-like"></i>  </button> <button><i class="flaticon-chat-1"></i> </button>
+                                                        <div class="comments-shared"> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
                                 </div>
-                                </div>
-                            </article>
+                            </div>
                         </div>
                     </div>
                 </div>
-                -->
             </div>
             <div class="clearfix"></div>
         </div><!-- .row -->
